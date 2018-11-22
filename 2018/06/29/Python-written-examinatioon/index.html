@@ -1,0 +1,1905 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python,笔试,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Yanbin's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="第一题 题目描述计算字符串最后一个单词的长度，单词以空格隔开。   输入描述一行字符串，非空，长度小于5000。   输出描述整数N，最后一个单词的长度。   示例1输入：hello world  输出：5  12345678910def function():    a = input()    if &amp;apos; &amp;apos; not in a:        print(len(a))">
+<meta name="keywords" content="Python,笔试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="牛客网华为机试：Using Python">
+<meta property="og:url" content="https://blog.luoyanbin.cn/2018/06/29/Python-written-examinatioon/index.html">
+<meta property="og:site_name" content="Yanbin&#39;s blog">
+<meta property="og:description" content="第一题 题目描述计算字符串最后一个单词的长度，单词以空格隔开。   输入描述一行字符串，非空，长度小于5000。   输出描述整数N，最后一个单词的长度。   示例1输入：hello world  输出：5  12345678910def function():    a = input()    if &amp;apos; &amp;apos; not in a:        print(len(a))">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-22T12:00:11.593Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="牛客网华为机试：Using Python">
+<meta name="twitter:description" content="第一题 题目描述计算字符串最后一个单词的长度，单词以空格隔开。   输入描述一行字符串，非空，长度小于5000。   输出描述整数N，最后一个单词的长度。   示例1输入：hello world  输出：5  12345678910def function():    a = input()    if &amp;apos; &amp;apos; not in a:        print(len(a))">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.luoyanbin.cn/2018/06/29/Python-written-examinatioon/">
+
+
+
+
+
+  <title>牛客网华为机试：Using Python | Yanbin's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yanbin's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Discovering, Learning, Sharing</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.luoyanbin.cn/2018/06/29/Python-written-examinatioon/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yanbin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yanbin's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">牛客网华为机试：Using Python</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-29T11:09:42+08:00">
+                2018-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Python基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/29/Python-written-examinatioon/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/06/29/Python-written-examinatioon/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/06/29/Python-written-examinatioon/" class="leancloud_visitors" data-flag-title="牛客网华为机试：Using Python">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,752
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  22
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h1><blockquote>
+<p><code>题目描述</code>计算字符串最后一个单词的长度，单词以空格隔开。</p>
+</blockquote>
+<blockquote>
+<p><code>输入描述</code>一行字符串，非空，长度小于5000。</p>
+</blockquote>
+<blockquote>
+<p><code>输出描述</code>整数N，最后一个单词的长度。</p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code>输入：hello world  输出：5</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def function():</span><br><span class="line">    a = input()</span><br><span class="line">    if &apos; &apos; not in a:</span><br><span class="line">        print(len(a))</span><br><span class="line">    else:</span><br><span class="line">        sp = a.split(&apos; &apos;)</span><br><span class="line">        print(len(sp[-1]))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function()</span><br></pre></td></tr></table></figure>
+<h1 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h1><blockquote>
+<p><code>题目描述</code>写出一个程序，接受一个有字母和数字以及空格组成的字符串，和一个字符，然后输出输入字符串中含有该字符的个数。不区分大小写。</p>
+</blockquote>
+<blockquote>
+<p><code>输入描述</code>输入一个有字母和数字以及空格组成的字符串，和一个字符。</p>
+</blockquote>
+<blockquote>
+<p><code>输出描述</code>输出输入字符串中含有该字符的个数。</p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code>输入：ABCDEF A  输出：1</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">def function():</span><br><span class="line">    a = input()</span><br><span class="line">    b = input()</span><br><span class="line">    count = 0</span><br><span class="line">    if (ord(b) &gt;= 97) and (ord(b) &lt;= 122):</span><br><span class="line">        for el in a:</span><br><span class="line">            if (ord(el) == ord(b)) or (ord(el) == (ord(b) - 32)):</span><br><span class="line">                count += 1</span><br><span class="line">    elif (ord(b) &gt;= 65) and (ord(b) &lt;= 90):</span><br><span class="line">        for el in a:</span><br><span class="line">            if (ord(el) == ord(b)) or (ord(el) == (ord(b) + 32)):</span><br><span class="line">                count += 1</span><br><span class="line">    else:</span><br><span class="line">        for el in a:</span><br><span class="line">            if ord(el) == ord(b):</span><br><span class="line">                count += 1</span><br><span class="line">    print(count)</span><br><span class="line"></span><br><span class="line">function()</span><br></pre></td></tr></table></figure>
+<h1 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h1><blockquote>
+<p><code>题目描述</code>明明想在学校中请一些同学一起做一项问卷调查，为了实验的客观性，他先用计算机生成了N个1到1000之间的随机整数（N≤1000），对于其中重复的数字，只保留一个，把其余相同的数去掉，不同的数对应着不同的学生的学号。然后再把这些数从小到大排序，按照排好的顺序去找同学做调查。请你协助明明完成“去重”与“排序”的工作。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Input Param </span><br><span class="line"></span><br><span class="line">     n               输入随机数的个数     </span><br><span class="line"></span><br><span class="line">     inputArray      n个随机整数组成的数组</span><br><span class="line"></span><br><span class="line">Return Value</span><br><span class="line"></span><br><span class="line">     OutputArray    输出处理后的随机整数</span><br><span class="line"></span><br><span class="line">注：测试用例保证输入参数的正确性，答题者无需验证。测试用例不止一组。</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>输入描述</code>输入多行，先输入随机整数的个数，再输入相应个数的整数</p>
+</blockquote>
+<blockquote>
+<p><code>输出描述</code>返回多行，处理后的结果</p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">-----</span><br><span class="line">11</span><br><span class="line">10</span><br><span class="line">20</span><br><span class="line">40</span><br><span class="line">32</span><br><span class="line">67</span><br><span class="line">40</span><br><span class="line">20</span><br><span class="line">89</span><br><span class="line">300</span><br><span class="line">400</span><br><span class="line">15</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">-----</span><br><span class="line">10</span><br><span class="line">15</span><br><span class="line">20</span><br><span class="line">32</span><br><span class="line">40</span><br><span class="line">67</span><br><span class="line">89</span><br><span class="line">300</span><br><span class="line">400</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">while True:</span><br><span class="line">    try:</span><br><span class="line">        n = int(input())</span><br><span class="line">        inputArray = []</span><br><span class="line">        for i in range(n):</span><br><span class="line">            inputArray.append(int(input()))</span><br><span class="line">        outputArray = list(set(inputArray))</span><br><span class="line">        outputArray.sort()</span><br><span class="line">        for el in outputArray:</span><br><span class="line">            print(el)</span><br><span class="line">    except:</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
+<h1 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h1><blockquote>
+<p><code>题目描述</code>•连续输入字符串，请按长度为8拆分每个字符串后输出到新的字符串数组；<br>•长度不是8整数倍的字符串请在后面补数字0，空字符串不处理。 </p>
+</blockquote>
+<blockquote>
+<p><code>输入描述</code>连续输入字符串(输入2次,每个字符串长度小于100)</p>
+</blockquote>
+<blockquote>
+<p><code>输出描述</code>输出到长度为8的新字符串数组</p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">-----</span><br><span class="line">abc</span><br><span class="line">123456789</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">-----</span><br><span class="line">abc00000</span><br><span class="line">12345678</span><br><span class="line">90000000</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">while True:</span><br><span class="line">    try:</span><br><span class="line">        str1 = input()</span><br><span class="line">        if str1:</span><br><span class="line">            length1 = len(str1)</span><br><span class="line">            if (length1 % 8) == 0:</span><br><span class="line">                for i in range(0, length1, 8):</span><br><span class="line">                    print(str1[i:i + 8])</span><br><span class="line">            else:</span><br><span class="line">                length1_ = (length1 // 8) * 8 + 8</span><br><span class="line">                for i in range(length1, length1_):</span><br><span class="line">                    str1 += &apos;0&apos;</span><br><span class="line">                for i in range(0, length1_, 8):</span><br><span class="line">                    print(str1[i:i + 8])</span><br><span class="line">        else:</span><br><span class="line">            print(str1)</span><br><span class="line">            </span><br><span class="line">        str2 = input()</span><br><span class="line">        if str2:</span><br><span class="line">            length2 = len(str2)</span><br><span class="line">            if (length2 % 8) == 0:</span><br><span class="line">                for i in range(0, length2, 8):</span><br><span class="line">                    print(str2[i:i + 8])</span><br><span class="line">            else:</span><br><span class="line">                length2_ = (length2 // 8) * 8 + 8</span><br><span class="line">                for i in range(length2, length2_):</span><br><span class="line">                    str2 += &apos;0&apos;</span><br><span class="line">                for i in range(0, length2_, 8):</span><br><span class="line">                    print(str2[i:i + 8])</span><br><span class="line">        else:</span><br><span class="line">            print(str2)</span><br><span class="line"></span><br><span class="line">    except:</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
+<h1 id="第五题"><a href="#第五题" class="headerlink" title="第五题"></a>第五题</h1><blockquote>
+<p><code>题目描述</code>写出一个程序，接受一个十六进制的数值字符串，输出该数值的十进制字符串。（多组同时输入 ）</p>
+</blockquote>
+<blockquote>
+<p><code>输入描述</code>输入一个十六进制的数值字符串。</p>
+</blockquote>
+<blockquote>
+<p><code>输出描述</code>输出该数值的十进制字符串。</p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">-----</span><br><span class="line">0xA</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">-----</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">while True:</span><br><span class="line">    try:</span><br><span class="line">        Hex = input()</span><br><span class="line">        print(int(Hex, 16))</span><br><span class="line">    except:</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
+<h1 id="第六题"><a href="#第六题" class="headerlink" title="第六题"></a>第六题</h1><blockquote>
+<p><code>题目描述</code>功能:输入一个正整数，按照从小到大的顺序输出它的所有质数的因子（如180的质数因子为2 2 3 3 5 ）最后一个数后面也要有空格</p>
+</blockquote>
+<blockquote>
+<p><code>详细描述</code><br>函数接口说明：<br>public String getResult(long ulDataInput)<br>输入参数：<br>long ulDataInput：输入的正整数<br>返回值：<br>String</p>
+</blockquote>
+<blockquote>
+<p><code>输入描述</code>输入一个long型整数</p>
+</blockquote>
+<blockquote>
+<p><code>输出描述</code>按照从小到大的顺序输出它的所有质数的因子，以空格隔开。最后一个数后面也要有空格。</p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">-----</span><br><span class="line">180</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">-----</span><br><span class="line">2 2 3 3 5</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">while True:</span><br><span class="line">    try:</span><br><span class="line">        num = int(input())</span><br><span class="line">        while num &gt; 1:</span><br><span class="line">            i = 2</span><br><span class="line">            while True:</span><br><span class="line">                if num % i == 0:</span><br><span class="line">                    print(i, end=&apos; &apos;)</span><br><span class="line">                    num /= i</span><br><span class="line">                    break</span><br><span class="line">                i += 1</span><br><span class="line">    except:</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
+<h1 id="第七题"><a href="#第七题" class="headerlink" title="第七题"></a>第七题</h1><blockquote>
+<p><code>题目描述</code>写出一个程序，接受一个正浮点数值，输出该数值的近似整数值。如果小数点后数值大于等于5,向上取整；小于5，则向下取整。</p>
+</blockquote>
+<blockquote>
+<p><code>输入描述</code>输入一个正浮点数值</p>
+</blockquote>
+<blockquote>
+<p><code>输出描述</code>输出该数值的近似整数值</p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">-----</span><br><span class="line">5.5</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">-----</span><br><span class="line">6</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">while True:</span><br><span class="line">    try:</span><br><span class="line">        num = input()</span><br><span class="line">        index = num.index(&apos;.&apos;)</span><br><span class="line">        if int(num[index+1]) &gt;= 5:</span><br><span class="line">            print(int(num[: index])+1)</span><br><span class="line">        else:</span><br><span class="line">            print(int(num[: index]))</span><br><span class="line">    except:</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
+<h1 id="第八题"><a href="#第八题" class="headerlink" title="第八题"></a>第八题</h1><blockquote>
+<p><code>题目描述</code>数据表记录包含表索引和数值，请对表索引相同的记录进行合并，即将相同索引的数值进行求和运算，输出按照key值升序进行输出。</p>
+</blockquote>
+<blockquote>
+<p><code>输入描述</code>先输入键值对的个数<br>然后输入成对的index和value值，以空格隔开</p>
+</blockquote>
+<blockquote>
+<p><code>输出描述</code>输出合并后的键值对（多行）</p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">-----</span><br><span class="line">4</span><br><span class="line">0 1</span><br><span class="line">0 2</span><br><span class="line">1 2</span><br><span class="line">3 4</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">----</span><br><span class="line">0 3</span><br><span class="line">1 2</span><br><span class="line">3 4</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">while True:</span><br><span class="line">    try:</span><br><span class="line">        num = int(input())</span><br><span class="line">        output = &#123;&#125;</span><br><span class="line">        for i in range(num):</span><br><span class="line">            pair = input().split(&apos; &apos;)</span><br><span class="line">            output[int(pair[0])] = output.setdefault(int(pair[0]), 0) + int(pair[1])</span><br><span class="line">        output_list = sorted(output.keys())</span><br><span class="line">        for i in output_list:</span><br><span class="line">            print(i, output[i])</span><br><span class="line">    except:</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
+<h1 id="第九题"><a href="#第九题" class="headerlink" title="第九题"></a>第九题</h1><blockquote>
+<p><code>题目描述</code>输入一个int型整数，按照从右向左的阅读顺序，返回一个不含重复数字的新的整数。</p>
+</blockquote>
+<blockquote>
+<p><code>输入描述</code>输入一个int型整数</p>
+</blockquote>
+<blockquote>
+<p><code>输出描述</code>按照从右向左的阅读顺序，返回一个不含重复数字的新的整数</p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code></p>
+</blockquote>
+<p>输入：9876673</p>
+<p>输出：37689</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        num = input()</span><br><span class="line">        length = len(num)</span><br><span class="line">        output = num[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(length<span class="number">-2</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> num[i] <span class="keyword">not</span> <span class="keyword">in</span> num[i+<span class="number">1</span>:]:</span><br><span class="line">                output += num[i]</span><br><span class="line">        print(output)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<h1 id="第十题"><a href="#第十题" class="headerlink" title="第十题"></a>第十题</h1><blockquote>
+<p><code>题目描述</code>输入一个整数，将这个整数以字符串的形式逆序输出</p>
+</blockquote>
+<p>程序不考虑负数的情况，若数字含有0，则逆序形式也含有0，如输入为100，则输出为001</p>
+<blockquote>
+<p><code>输入描述</code>输入一个int整数</p>
+</blockquote>
+<blockquote>
+<p><code>输出描述</code>将这个整数以字符串的形式逆序输出</p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code></p>
+</blockquote>
+<p>输入：1516000</p>
+<p>输出：0006151</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        print(input()[::<span class="number">-1</span>])</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<h1 id="第十一题"><a href="#第十一题" class="headerlink" title="第十一题"></a>第十一题</h1><blockquote>
+<p><code>题目描述</code>写出一个程序，接受一个字符串，然后输出该字符串反转后的字符串。</p>
+</blockquote>
+<blockquote>
+<p><code>输入描述</code>输入N个字符</p>
+</blockquote>
+<blockquote>
+<p><code>输出描述</code>输出该字符串反转后的字符串</p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code></p>
+</blockquote>
+<p>输入：abcd</p>
+<p>输出：dcba</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        print(input()[::<span class="number">-1</span>])</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<h1 id="第十二题"><a href="#第十二题" class="headerlink" title="第十二题"></a>第十二题</h1><blockquote>
+<p><code>题目描述</code>将一个英文语句以单词为单位逆序排放。例如“I am a boy”，逆序排放后为“boy a am I”，所有单词之间用一个空格隔开，语句中除了英文字母外，不再包含其他字符</p>
+</blockquote>
+<blockquote>
+<p><code>输入描述</code>将一个英文语句以单词为单位逆序排放。</p>
+</blockquote>
+<blockquote>
+<p><code>输出描述</code>得到逆序的句子</p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code></p>
+</blockquote>
+<p>输入：I am a boy</p>
+<p>输出：boy a am I</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        sen = input().split(<span class="string">' '</span>)</span><br><span class="line">        s = <span class="string">''</span></span><br><span class="line">        <span class="keyword">for</span> index, word <span class="keyword">in</span> enumerate(sen[:: <span class="number">-1</span>]):</span><br><span class="line">            <span class="keyword">if</span> index == (len(sen) <span class="number">-1</span>):</span><br><span class="line">                s += word</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                s = s + word + <span class="string">' '</span></span><br><span class="line">        print(s)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<h1 id="第十三题-字串的连接最长路径查找"><a href="#第十三题-字串的连接最长路径查找" class="headerlink" title="第十三题 字串的连接最长路径查找"></a>第十三题 字串的连接最长路径查找</h1><blockquote>
+<p><code>题目描述</code>给定n个字符串，请对n个字符串按照字典序排列。</p>
+</blockquote>
+<blockquote>
+<p><code>输入描述</code>输入第一行为一个正整数n(1≤n≤1000),下面n行为n个字符串(字符串长度≤100),字符串中只含有大小写字母。</p>
+</blockquote>
+<blockquote>
+<p><code>输出描述</code>数据输出n行，输出结果为按照字典序排列的字符串。</p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code></p>
+</blockquote>
+<p>输入：</p>
+<pre><code>9
+cap
+to
+cat
+card
+two
+too
+up
+boat
+boot
+</code></pre><p>输出：</p>
+<pre><code>boat
+boot
+cap
+card
+cat
+to
+too
+two
+up
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">while True:</span><br><span class="line">    try:</span><br><span class="line">        num = int(input())</span><br><span class="line">        strings = []</span><br><span class="line">        for i in range(num):</span><br><span class="line">            strings.append(input())</span><br><span class="line">        strings.sort()</span><br><span class="line">        for i in strings:</span><br><span class="line">            print(i)</span><br><span class="line">    except:</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
+<h1 id="第十四题-求int型正整数在内存中存储时1的个数"><a href="#第十四题-求int型正整数在内存中存储时1的个数" class="headerlink" title="第十四题 求int型正整数在内存中存储时1的个数"></a>第十四题 求int型正整数在内存中存储时1的个数</h1><blockquote>
+<p><code>题目描述</code>输入一个int型的正整数，计算出该int型数据在内存中存储时1的个数。</p>
+</blockquote>
+<blockquote>
+<p><code>输入描述</code>输入一个整数（int类型）</p>
+</blockquote>
+<blockquote>
+<p><code>输出描述</code>这个数转换成2进制后，输出1的个数</p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code></p>
+</blockquote>
+<p>输入：</p>
+<pre><code>5
+</code></pre><p>输出：</p>
+<pre><code>2
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">while True:</span><br><span class="line">    try:</span><br><span class="line">        num = int(input())</span><br><span class="line">        count = 0</span><br><span class="line">        for i in bin(num):</span><br><span class="line">            if i == &apos;1&apos;:</span><br><span class="line">                count += 1</span><br><span class="line">        print(count)</span><br><span class="line">    except:</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
+<h1 id="第十五题-购物单"><a href="#第十五题-购物单" class="headerlink" title="第十五题 购物单"></a>第十五题 购物单</h1><blockquote>
+<p><code>题目描述</code>王强今天很开心，公司发给N元的年终奖。王强决定把年终奖用于购物，他把想买的物品分为两类：主件与附件，附件是从属于某个主件的，下表就是一些主件与附件的例子：</p>
+</blockquote>
+<pre><code>主件    附件
+电脑    打印机，扫描仪
+书柜    图书
+书桌    台灯，文具
+工作椅    无
+</code></pre><p>如果要买归类为附件的物品，必须先买该附件所属的主件。每个主件可以有 0 个、 1 个或 2 个附件。附件不再有从属于自己的附件。王强想买的东西很多，为了不超出预算，他把每件物品规定了一个重要度，分为 5 等：用整数 1 ~ 5 表示，第 5 等最重要。他还从因特网上查到了每件物品的价格（都是 10 元的整数倍）。他希望在不超过 N 元（可以等于 N 元）的前提下，使每件物品的价格与重要度的乘积的总和最大。</p>
+<p>设第 j 件物品的价格为 v[j] ，重要度为 w[j] ，共选中了 k 件物品，编号依次为 j 1 ， j 2 ，……， j k ，则所求的总和为：<br>v[j 1 ]<em>w[j 1 ]+v[j 2 ]</em>w[j 2 ]+ … +v[j k ]<em>w[j k ] 。（其中 </em> 为乘号）</p>
+<p>请你帮助王强设计一个满足要求的购物单。</p>
+<blockquote>
+<p><code>输入描述</code>输入的第 1 行，为两个正整数，用一个空格隔开：N m</p>
+</blockquote>
+<p>（其中 N （ &lt;32000 ）表示总钱数， m （ &lt;60 ）为希望购买物品的个数。）</p>
+<p>从第 2 行到第 m+1 行，第 j 行给出了编号为 j-1 的物品的基本数据，每行有 3 个非负整数 v p q</p>
+<p>（其中 v 表示该物品的价格（ v<10000 1="" 5="" ），="" p="" 表示该物品的重要度（="" ~="" q="" 表示该物品是主件还是附件。如果="" ，表示该物品为主件，如果="">0 ，表示该物品为附件， q 是所属主件的编号）</10000></p>
+<blockquote>
+<p><code>输出描述</code>输出文件只有一个正整数，为不超过总钱数的物品的价格与重要度乘积的总和的最大值（ &lt;200000 ）。</p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code></p>
+</blockquote>
+<p>输入：</p>
+<pre><code>1000 5
+800 2 0
+400 5 1
+300 5 1
+400 3 0
+500 2 0
+</code></pre><p>输出：</p>
+<pre><code>2200
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">while True:</span><br><span class="line">    try:</span><br><span class="line">        N, m = map(int, input().strip().split())</span><br><span class="line">        goods = []</span><br><span class="line">        for i in range(m):</span><br><span class="line">            goods.append(list(map(int, input().strip().split())))</span><br><span class="line">        def dp_max(N, m, goods):</span><br><span class="line">            a = [[0]*(N+1) for _ in range(m+1)]</span><br><span class="line">            for i in range(1, m+1):</span><br><span class="line">                for j in range(10, N+1, 10):</span><br><span class="line">                    if goods[i-1][2] == 0:</span><br><span class="line">                        if goods[i-1][0] &lt;= j:</span><br><span class="line">                            a[i][j] = max(a[i-1][j], a[i-1][j - goods[i-1][0]] + goods[i-1][0]*goods[i-1][1])</span><br><span class="line">                    elif (goods[i-1][0] + goods[goods[i-1][2]-1][0]) &lt;= j:</span><br><span class="line">                        a[i][j] = max(a[i-1][j], a[i-1][j - goods[i-1][0] - goods[goods[i-1][2]-1][0]] + goods[i-1][0] * goods[i-1][1] + goods[goods[i-1][2]-1][0] * goods[goods[i-1][2]-1][1])</span><br><span class="line">            print(a[m][int(N / 10) * 10])</span><br><span class="line">        dp_max(N, m, goods)</span><br><span class="line">    except:</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
+<h1 id="第十六题-坐标移动"><a href="#第十六题-坐标移动" class="headerlink" title="第十六题 坐标移动"></a>第十六题 坐标移动</h1><blockquote>
+<p><code>题目描述</code>开发一个坐标计算工具， A表示向左移动，D表示向右移动，W表示向上移动，S表示向下移动。从（0,0）点开始移动，从输入字符串里面读取一些坐标，并将最终输入结果输出到输出文件里面。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">合法坐标为A(或者D或者W或者S) + 数字（两位以内）</span><br><span class="line">坐标之间以;分隔。</span><br><span class="line">非法坐标点需要进行丢弃。如AA10;  A1A;  $%$;  YAD; 等。</span><br><span class="line">下面是一个简单的例子 如：</span><br><span class="line">A10;S20;W10;D30;X;A1A;B10A11;;A10;</span><br><span class="line">处理过程：</span><br><span class="line">起点（0,0）</span><br><span class="line">+   A10   =  （-10,0）</span><br><span class="line">+   S20   =  (-10,-20)</span><br><span class="line">+   W10  =  (-10,-10)</span><br><span class="line">+   D30  =  (20,-10)</span><br><span class="line">+   x    =  无效</span><br><span class="line">+   A1A   =  无效</span><br><span class="line">+   B10A11   =  无效</span><br><span class="line">+  一个空 不影响</span><br><span class="line">+   A10  =  (10,-10)</span><br><span class="line">结果 （10， -10）</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>输入描述</code>一行字符串</p>
+</blockquote>
+<blockquote>
+<p><code>输出描述</code>最终坐标，以,分隔</p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code></p>
+</blockquote>
+<p>输入：A10;S20;W10;D30;X;A1A;B10A11;;A10;</p>
+<p>输出：10,-10</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">for line in sys.stdin:</span><br><span class="line">    text = line.strip().split(&apos;;&apos;)</span><br><span class="line">    x = 0</span><br><span class="line">    y = 0</span><br><span class="line">    actions = []</span><br><span class="line">    for el in text:</span><br><span class="line">        if re.match(&apos;^[AWDS]\d$&apos;, el) or re.match(&apos;^[AWDS]\d\d$&apos;, el):</span><br><span class="line">            actions.append(el)</span><br><span class="line">    for el in actions:</span><br><span class="line">        if el[0] == &apos;A&apos;:</span><br><span class="line">            x -= int(el[1:])</span><br><span class="line">        if el[0] == &apos;D&apos;:</span><br><span class="line">            x += int(el[1:])</span><br><span class="line">        if el[0] == &apos;W&apos;:</span><br><span class="line">            y += int(el[1:])</span><br><span class="line">        if el[0] == &apos;S&apos;:</span><br><span class="line">            y -= int(el[1:])</span><br><span class="line">    print(&apos;%d,%d&apos; % (x, y))</span><br></pre></td></tr></table></figure>
+<h1 id="第十七题-识别有效的IP地址和掩码并进行分类统计"><a href="#第十七题-识别有效的IP地址和掩码并进行分类统计" class="headerlink" title="第十七题 识别有效的IP地址和掩码并进行分类统计"></a>第十七题 识别有效的IP地址和掩码并进行分类统计</h1><blockquote>
+<p><code>题目描述</code>请解析IP地址和对应的掩码，进行分类识别。要求按照A/B/C/D/E类地址归类，不合法的地址和掩码单独归类。</p>
+</blockquote>
+<p>所有的IP地址划分为 A,B,C,D,E五类</p>
+<p>A类地址1.0.0.0~126.255.255.255;</p>
+<p>B类地址128.0.0.0~191.255.255.255;</p>
+<p>C类地址192.0.0.0~223.255.255.255;</p>
+<p>D类地址224.0.0.0~239.255.255.255；</p>
+<p>E类地址240.0.0.0~255.255.255.255</p>
+<p>私网IP范围是：</p>
+<p>10.0.0.0～10.255.255.255</p>
+<p>172.16.0.0～172.31.255.255</p>
+<p>192.168.0.0～192.168.255.255</p>
+<p>子网掩码为前面是连续的1，然后全是0。（例如：255.255.255.32就是一个非法的掩码）<br>本题暂时默认以0开头的IP地址是合法的，比如0.1.1.2，是合法地址</p>
+<blockquote>
+<p><code>输入描述</code>多行字符串。每行一个IP地址和掩码，用~隔开。</p>
+</blockquote>
+<blockquote>
+<p><code>输出描述</code>统计A、B、C、D、E、错误IP地址或错误掩码、私有IP的个数，之间以空格隔开。</p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code></p>
+</blockquote>
+<p>输入：<br>    0.70.44.68~255.254.255.0<br>    1.0.0.1~255.0.0.0<br>    192.168.0.2~255.255.255.0<br>    19..0.~255.255.255.0</p>
+<p>输出：1 0 1 0 0 2 1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">A = <span class="number">0</span></span><br><span class="line">B = <span class="number">0</span></span><br><span class="line">C = <span class="number">0</span></span><br><span class="line">D = <span class="number">0</span></span><br><span class="line">E = <span class="number">0</span></span><br><span class="line">err = <span class="number">0</span></span><br><span class="line">pri = <span class="number">0</span></span><br><span class="line">legal = [<span class="string">'254'</span>, <span class="string">'252'</span>, <span class="string">'248'</span>, <span class="string">'240'</span>, <span class="string">'224'</span>, <span class="string">'192'</span>, <span class="string">'128'</span>, <span class="string">'0'</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check_ip</span><span class="params">(ip)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> (len(ip) != <span class="number">4</span>) <span class="keyword">or</span> (<span class="string">''</span> <span class="keyword">in</span> ip):</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> ip:</span><br><span class="line">            <span class="keyword">if</span> (int(ip[<span class="number">0</span>]) &lt; <span class="number">0</span>) <span class="keyword">or</span> (int(ip[<span class="number">0</span>]) &gt; <span class="number">255</span>):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check_mask</span><span class="params">(ms)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> (len(ms) != <span class="number">4</span>) <span class="keyword">or</span> (<span class="string">''</span> <span class="keyword">in</span> ms):</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">    <span class="keyword">if</span> ms[<span class="number">0</span>] == <span class="string">'255'</span>:</span><br><span class="line">        <span class="keyword">if</span> ms[<span class="number">1</span>] == <span class="string">'255'</span>:</span><br><span class="line">            <span class="keyword">if</span> ms[<span class="number">2</span>] == <span class="string">'255'</span>:</span><br><span class="line">                <span class="keyword">if</span> ms[<span class="number">3</span>] <span class="keyword">in</span> legal:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">            <span class="keyword">elif</span> (ms[<span class="number">2</span>] <span class="keyword">in</span> legal) <span class="keyword">and</span> (ms[<span class="number">3</span>] == <span class="string">'0'</span>):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">elif</span> (ms[<span class="number">1</span>] <span class="keyword">in</span> legal) <span class="keyword">and</span> (ms[<span class="number">2</span>] == <span class="string">'0'</span>) <span class="keyword">and</span> (ms[<span class="number">3</span>] == <span class="string">'0'</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">    <span class="keyword">elif</span> (ms[<span class="number">0</span>] <span class="keyword">in</span> legal) <span class="keyword">and</span> (ms[<span class="number">1</span>] == <span class="string">'0'</span>) <span class="keyword">and</span> (ms[<span class="number">2</span>] == <span class="string">'0'</span>) <span class="keyword">and</span> (ms[<span class="number">3</span>] == <span class="string">'0'</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> sys.stdin:</span><br><span class="line">    elements = line.strip().split(<span class="string">'\n'</span>)</span><br><span class="line">    <span class="keyword">for</span> el <span class="keyword">in</span> elements:</span><br><span class="line">        ip = el.split(<span class="string">'~'</span>)[<span class="number">0</span>].split(<span class="string">'.'</span>)</span><br><span class="line">        ms = el.split(<span class="string">'~'</span>)[<span class="number">1</span>].split(<span class="string">'.'</span>)</span><br><span class="line">        <span class="keyword">if</span> check_ip(ip) <span class="keyword">and</span> check_mask(ms):</span><br><span class="line">            <span class="keyword">if</span> (<span class="number">1</span> &lt;= int(ip[<span class="number">0</span>])) <span class="keyword">and</span> (int(ip[<span class="number">0</span>]) &lt;= <span class="number">126</span>):</span><br><span class="line">                A += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="number">128</span> &lt;= int(ip[<span class="number">0</span>])) <span class="keyword">and</span> (int(ip[<span class="number">0</span>]) &lt;= <span class="number">191</span>):</span><br><span class="line">                B += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="number">192</span> &lt;= int(ip[<span class="number">0</span>])) <span class="keyword">and</span> (int(ip[<span class="number">0</span>]) &lt;= <span class="number">223</span>):</span><br><span class="line">                C += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="number">224</span> &lt;= int(ip[<span class="number">0</span>])) <span class="keyword">and</span> (int(ip[<span class="number">0</span>]) &lt;= <span class="number">239</span>):</span><br><span class="line">                D += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="number">240</span> &lt;= int(ip[<span class="number">0</span>])) <span class="keyword">and</span> (int(ip[<span class="number">0</span>]) &lt;= <span class="number">255</span>):</span><br><span class="line">                E += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> (int(ip[<span class="number">0</span>]) == <span class="number">10</span>) <span class="keyword">or</span> ((int(ip[<span class="number">0</span>]) == <span class="number">172</span>) <span class="keyword">and</span> (<span class="number">16</span> &lt;= int(ip[<span class="number">1</span>])) <span class="keyword">and</span> (int(ip[<span class="number">1</span>]) &lt;= <span class="number">31</span>)) <span class="keyword">or</span> ((int(ip[<span class="number">0</span>]) == <span class="number">192</span>) <span class="keyword">and</span> (int(ip[<span class="number">1</span>]) == <span class="number">168</span>)):</span><br><span class="line">                pri += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            err += <span class="number">1</span></span><br><span class="line">print(<span class="string">'%d %d %d %d %d %d %d'</span> % (A, B, C, D, E, err, pri))</span><br></pre></td></tr></table></figure>
+<h1 id="第十八题-简单错误记录"><a href="#第十八题-简单错误记录" class="headerlink" title="第十八题 简单错误记录"></a>第十八题 简单错误记录</h1><blockquote>
+<p><code>题目描述</code>开发一个简单错误记录功能小模块，能够记录出错的代码所在的文件名称和行号。</p>
+</blockquote>
+<p>处理: </p>
+<p>1、 记录最多8条错误记录，循环记录，对相同的错误记录（净文件名称和行号完全匹配）只记录一条，错误计数增加；</p>
+<p>2、 超过16个字符的文件名称，只记录文件的最后有效16个字符；</p>
+<p>3、 输入的文件可能带路径，记录文件名称不能带路径。</p>
+<blockquote>
+<p><code>输入描述</code>一行或多行字符串。每行包括带路径文件名称，行号，以空格隔开。</p>
+</blockquote>
+<blockquote>
+<p><code>输出描述</code>将所有的记录统计并将结果输出，格式：文件名 代码行数 数目，一个空格隔开，如：</p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code></p>
+</blockquote>
+<p>输入：E:\V1R2\product\fpgadrive.c   1325</p>
+<p>输出：fpgadrive.c 1325 1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line"></span><br><span class="line">records = []</span><br><span class="line">count = &#123;&#125;</span><br><span class="line">for line in sys.stdin:</span><br><span class="line">    record, num = line.strip().split()</span><br><span class="line">    if &apos;\\&apos; in record:</span><br><span class="line">        record = record.split(&apos;\\&apos;)[-1][-16:]</span><br><span class="line">    else:</span><br><span class="line">        record = record[-16:]</span><br><span class="line">    record = record + &apos; &apos; + num</span><br><span class="line">    if record not in records:</span><br><span class="line">        records.append(record)</span><br><span class="line">        count[record] = 1</span><br><span class="line">    else:</span><br><span class="line">        count[record] += 1</span><br><span class="line">for record in records[-8:]:</span><br><span class="line">    print(&apos;%s %d&apos; % (record, count[record]))</span><br></pre></td></tr></table></figure>
+<h1 id="第十九题-密码验证合格程序"><a href="#第十九题-密码验证合格程序" class="headerlink" title="第十九题 密码验证合格程序"></a>第十九题 密码验证合格程序</h1><blockquote>
+<p><code>题目描述</code>密码要求:</p>
+</blockquote>
+<p>1.长度超过8位</p>
+<p>2.包括大小写字母.数字.其它符号,以上四种至少三种</p>
+<p>3.不能有相同长度超2的子串重复</p>
+<p>说明:长度超过2的子串</p>
+<blockquote>
+<p><code>输入描述</code>一组或多组长度超过2的子符串。每组占一行</p>
+</blockquote>
+<blockquote>
+<p><code>输出描述</code>如果符合要求输出：OK，否则输出NG</p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code></p>
+</blockquote>
+<p>输入:</p>
+<pre><code>021Abc9000
+021Abc9Abc1
+021ABC9000
+021$bc9000
+</code></pre><p>输出：</p>
+<pre><code>OK
+NG
+NG
+OK
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check1</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(s) &gt; <span class="number">8</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check2</span><span class="params">(s)</span>:</span></span><br><span class="line">    k1 = <span class="number">0</span></span><br><span class="line">    k2 = <span class="number">0</span></span><br><span class="line">    k3 = <span class="number">0</span></span><br><span class="line">    k4 = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> el <span class="keyword">in</span> s:</span><br><span class="line">        <span class="keyword">if</span> <span class="string">'A'</span> &lt;= el &lt;= <span class="string">'Z'</span>:</span><br><span class="line">            k1 = <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> <span class="string">'a'</span> &lt;= el &lt;= <span class="string">'z'</span>:</span><br><span class="line">            k2 = <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> <span class="string">'0'</span> &lt;= el &lt;= <span class="string">'9'</span>:</span><br><span class="line">            k3 = <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            k4 = <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> (k1 + k2 + k3 + k4) &gt;= <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check3</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s) - <span class="number">3</span>):</span><br><span class="line">        <span class="keyword">if</span> s[i:i+<span class="number">3</span>] <span class="keyword">in</span> s[i+<span class="number">1</span>:]:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> sys.stdin:</span><br><span class="line">    code = line.strip(<span class="string">'\n'</span>)</span><br><span class="line">    <span class="keyword">if</span> check1(code) <span class="keyword">and</span> check2(code) <span class="keyword">and</span> check3(code):</span><br><span class="line">        print(<span class="string">'OK'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">'NG'</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="第二十题"><a href="#第二十题" class="headerlink" title="第二十题"></a>第二十题</h1><blockquote>
+<p><code>题目描述</code></p>
+</blockquote>
+<blockquote>
+<p><code>输入描述</code></p>
+</blockquote>
+<blockquote>
+<p><code>输出描述</code></p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code></p>
+</blockquote>
+<h1 id="第二十一题"><a href="#第二十一题" class="headerlink" title="第二十一题"></a>第二十一题</h1><blockquote>
+<p><code>题目描述</code></p>
+</blockquote>
+<blockquote>
+<p><code>输入描述</code></p>
+</blockquote>
+<blockquote>
+<p><code>输出描述</code></p>
+</blockquote>
+<blockquote>
+<p><code>示例1</code></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/06/29/Python-written-examinatioon/">牛客网华为机试：Using Python</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Yanbin 的个人博客">Yanbin</a></p>
+  <p><span>发布时间:</span>2018年06月29日 - 11:06</p>
+  <p><span>最后更新:</span>2018年11月22日 - 20:11</p>
+  <p><span>原始链接:</span><a href="/2018/06/29/Python-written-examinatioon/" title="牛客网华为机试：Using Python">https://blog.luoyanbin.cn/2018/06/29/Python-written-examinatioon/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://blog.luoyanbin.cn/2018/06/29/Python-written-examinatioon/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者，支持友情链接。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+	  $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	});
+    });  
+</script>
+
+
+      
+    </div>
+    
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Yanbin 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Yanbin 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+            <a href="/tags/笔试/" rel="tag"><i class="fa fa-tag"></i> 笔试</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/27/install-tensorflow-in-Anaconda/" rel="next" title="Anaconda安装Tensorflow框架">
+                <i class="fa fa-chevron-left"></i> Anaconda安装Tensorflow框架
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/04/modify-the-datadir-of-mysql/" rel="prev" title="修改Mysql的数据库存储路径">
+                修改Mysql的数据库存储路径 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Yanbin">
+            
+              <p class="site-author-name" itemprop="name">Yanbin</p>
+              <p class="site-description motion-element" itemprop="description">Standing on shoulders of giants</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chinaluoyanbin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/chinaluoyanbin" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一题"><span class="nav-number">1.</span> <span class="nav-text">第一题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二题"><span class="nav-number">2.</span> <span class="nav-text">第二题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三题"><span class="nav-number">3.</span> <span class="nav-text">第三题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第四题"><span class="nav-number">4.</span> <span class="nav-text">第四题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第五题"><span class="nav-number">5.</span> <span class="nav-text">第五题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第六题"><span class="nav-number">6.</span> <span class="nav-text">第六题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第七题"><span class="nav-number">7.</span> <span class="nav-text">第七题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第八题"><span class="nav-number">8.</span> <span class="nav-text">第八题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第九题"><span class="nav-number">9.</span> <span class="nav-text">第九题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十题"><span class="nav-number">10.</span> <span class="nav-text">第十题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十一题"><span class="nav-number">11.</span> <span class="nav-text">第十一题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十二题"><span class="nav-number">12.</span> <span class="nav-text">第十二题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十三题-字串的连接最长路径查找"><span class="nav-number">13.</span> <span class="nav-text">第十三题 字串的连接最长路径查找</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十四题-求int型正整数在内存中存储时1的个数"><span class="nav-number">14.</span> <span class="nav-text">第十四题 求int型正整数在内存中存储时1的个数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十五题-购物单"><span class="nav-number">15.</span> <span class="nav-text">第十五题 购物单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十六题-坐标移动"><span class="nav-number">16.</span> <span class="nav-text">第十六题 坐标移动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十七题-识别有效的IP地址和掩码并进行分类统计"><span class="nav-number">17.</span> <span class="nav-text">第十七题 识别有效的IP地址和掩码并进行分类统计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十八题-简单错误记录"><span class="nav-number">18.</span> <span class="nav-text">第十八题 简单错误记录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十九题-密码验证合格程序"><span class="nav-number">19.</span> <span class="nav-text">第十九题 密码验证合格程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二十题"><span class="nav-number">20.</span> <span class="nav-text">第二十题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二十一题"><span class="nav-number">21.</span> <span class="nav-text">第二十一题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yanbin</span>
+
+  
+</div>
+
+
+
+
+
+
+<!--
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+-->
+<!--
+  <span class="post-meta-divider">|</span>
+-->
+  <span>
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+  </span>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=65820880";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: '7fLXHY7Ihyg3BkVGF84Xh9dO-gzGzoHsz',
+        appKey: 'vnL5RYq2In5YaEvinptUUD5B',
+        placeholder: '填上邮箱，有回复及时提醒 :)',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("7fLXHY7Ihyg3BkVGF84Xh9dO-gzGzoHsz", "vnL5RYq2In5YaEvinptUUD5B");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
