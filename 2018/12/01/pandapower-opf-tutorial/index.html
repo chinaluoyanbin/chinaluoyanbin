@@ -125,19 +125,19 @@
 
 
 
-<meta name="description" content="pandapower最优潮流计算tutorialpandapower最优潮流计算[pandapower Optimal Power Flow]This is an introduction into the usage of the pandapower optimal power flow. It shows how to set the constraints and the cost fac">
+<meta name="description" content="pandapower最优潮流计算[pandapower Optimal Power Flow]This is an introduction into the usage of the pandapower optimal power flow. It shows how to set the constraints and the cost factors into the pandapower">
 <meta name="keywords" content="Python,Pandapower,电力系统,潮流计算">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pandapower最优潮流计算tutorial">
 <meta property="og:url" content="https://blog.luoyanbin.cn/2018/12/01/pandapower-opf-tutorial/index.html">
 <meta property="og:site_name" content="Yanbin&#39;s blog">
-<meta property="og:description" content="pandapower最优潮流计算tutorialpandapower最优潮流计算[pandapower Optimal Power Flow]This is an introduction into the usage of the pandapower optimal power flow. It shows how to set the constraints and the cost fac">
+<meta property="og:description" content="pandapower最优潮流计算[pandapower Optimal Power Flow]This is an introduction into the usage of the pandapower optimal power flow. It shows how to set the constraints and the cost factors into the pandapower">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/e2nIEE/pandapower/raw/06af2a20dd711e055b51959becbbf5ab4757b782/tutorials/pics/example_opf.png">
-<meta property="og:updated_time" content="2018-12-01T07:49:16.498Z">
+<meta property="og:updated_time" content="2018-12-01T07:51:54.427Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pandapower最优潮流计算tutorial">
-<meta name="twitter:description" content="pandapower最优潮流计算tutorialpandapower最优潮流计算[pandapower Optimal Power Flow]This is an introduction into the usage of the pandapower optimal power flow. It shows how to set the constraints and the cost fac">
+<meta name="twitter:description" content="pandapower最优潮流计算[pandapower Optimal Power Flow]This is an introduction into the usage of the pandapower optimal power flow. It shows how to set the constraints and the cost factors into the pandapower">
 <meta name="twitter:image" content="https://github.com/e2nIEE/pandapower/raw/06af2a20dd711e055b51959becbbf5ab4757b782/tutorials/pics/example_opf.png">
 
 
@@ -385,8 +385,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/电力系统仿真与计算/" itemprop="url" rel="index">
-                    <span itemprop="name">电力系统仿真与计算</span>
+                  <a href="/categories/电力系统/" itemprop="url" rel="index">
+                    <span itemprop="name">电力系统</span>
                   </a>
                 </span>
 
@@ -440,7 +440,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,546
+                  3,539
                 </span>
               
 
@@ -477,7 +477,7 @@
       
 
       
-        <h1 id="pandapower最优潮流计算tutorial"><a href="#pandapower最优潮流计算tutorial" class="headerlink" title="pandapower最优潮流计算tutorial"></a>pandapower最优潮流计算tutorial</h1><h1 id="pandapower最优潮流计算-pandapower-Optimal-Power-Flow"><a href="#pandapower最优潮流计算-pandapower-Optimal-Power-Flow" class="headerlink" title="pandapower最优潮流计算[pandapower Optimal Power Flow]"></a>pandapower最优潮流计算[pandapower Optimal Power Flow]</h1><p>This is an introduction into the usage of the pandapower optimal power flow. It shows how to set the constraints and the cost factors into the pandapower element tables.</p>
+        <h1 id="pandapower最优潮流计算-pandapower-Optimal-Power-Flow"><a href="#pandapower最优潮流计算-pandapower-Optimal-Power-Flow" class="headerlink" title="pandapower最优潮流计算[pandapower Optimal Power Flow]"></a>pandapower最优潮流计算[pandapower Optimal Power Flow]</h1><p>This is an introduction into the usage of the pandapower optimal power flow. It shows how to set the constraints and the cost factors into the pandapower element tables.</p>
 <p>该notebook主要是介绍pandapower最优潮流计算的使用。它展示了如何将约束和成本因子设置进入pandapower的元件列表。</p>
 <h2 id="示例网络-Example-Network"><a href="#示例网络-Example-Network" class="headerlink" title="示例网络[Example Network]"></a>示例网络[Example Network]</h2><p>We use the following four bus example network for this tutorial:</p>
 <p>我们的教程使用下图的4节点示例网络：</p>
@@ -1056,7 +1056,7 @@ ValueError: Cost function must be defined for whole power range of the generator
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#pandapower最优潮流计算tutorial"><span class="nav-number">1.</span> <span class="nav-text">pandapower最优潮流计算tutorial</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pandapower最优潮流计算-pandapower-Optimal-Power-Flow"><span class="nav-number">2.</span> <span class="nav-text">pandapower最优潮流计算[pandapower Optimal Power Flow]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#示例网络-Example-Network"><span class="nav-number">2.1.</span> <span class="nav-text">示例网络[Example Network]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网损最小化-Loss-Minimization"><span class="nav-number">2.2.</span> <span class="nav-text">网损最小化[Loss Minimization]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个体发电机成本-Individual-Generator-Costs"><span class="nav-number">2.3.</span> <span class="nav-text">个体发电机成本[Individual Generator Costs]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变压器约束-Transformer-Constraint"><span class="nav-number">2.3.1.</span> <span class="nav-text">变压器约束[Transformer Constraint]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线路负载约束-Line-Loading-Constraints"><span class="nav-number">2.3.2.</span> <span class="nav-text">线路负载约束[Line Loading Constraints]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#电压约束-Voltage-Constraints"><span class="nav-number">2.3.3.</span> <span class="nav-text">电压约束[Voltage Constraints]</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直流最优潮流计算-DC-OPF"><span class="nav-number">2.4.</span> <span class="nav-text">直流最优潮流计算[DC OPF]</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#pandapower最优潮流计算-pandapower-Optimal-Power-Flow"><span class="nav-number">1.</span> <span class="nav-text">pandapower最优潮流计算[pandapower Optimal Power Flow]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#示例网络-Example-Network"><span class="nav-number">1.1.</span> <span class="nav-text">示例网络[Example Network]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网损最小化-Loss-Minimization"><span class="nav-number">1.2.</span> <span class="nav-text">网损最小化[Loss Minimization]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个体发电机成本-Individual-Generator-Costs"><span class="nav-number">1.3.</span> <span class="nav-text">个体发电机成本[Individual Generator Costs]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变压器约束-Transformer-Constraint"><span class="nav-number">1.3.1.</span> <span class="nav-text">变压器约束[Transformer Constraint]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线路负载约束-Line-Loading-Constraints"><span class="nav-number">1.3.2.</span> <span class="nav-text">线路负载约束[Line Loading Constraints]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#电压约束-Voltage-Constraints"><span class="nav-number">1.3.3.</span> <span class="nav-text">电压约束[Voltage Constraints]</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直流最优潮流计算-DC-OPF"><span class="nav-number">1.4.</span> <span class="nav-text">直流最优潮流计算[DC OPF]</span></a></li></ol></li></ol></div>
             
 
           </div>
