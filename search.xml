@@ -45,8 +45,8 @@
         <category>数据科学</category>
       </categories>
       <tags>
-        <tag>GBDT</tag>
         <tag>XGBoost</tag>
+        <tag>GBDT</tag>
       </tags>
   </entry>
   <entry>
@@ -90,8 +90,8 @@
         <category>数据科学</category>
       </categories>
       <tags>
-        <tag>XGBoost</tag>
         <tag>Python</tag>
+        <tag>XGBoost</tag>
       </tags>
   </entry>
   <entry>

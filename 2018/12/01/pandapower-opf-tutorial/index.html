@@ -133,12 +133,12 @@
 <meta property="og:site_name" content="Yanbin&#39;s blog">
 <meta property="og:description" content="pandapower最优潮流计算tutorialpandapower最优潮流计算[pandapower Optimal Power Flow]This is an introduction into the usage of the pandapower optimal power flow. It shows how to set the constraints and the cost fac">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://blog.luoyanbin.cn/2018/12/01/pandapower-opf-tutorial/pics/example_opf.png">
-<meta property="og:updated_time" content="2018-12-01T07:32:37.769Z">
+<meta property="og:image" content="https://github.com/e2nIEE/pandapower/raw/06af2a20dd711e055b51959becbbf5ab4757b782/tutorials/pics/example_opf.png">
+<meta property="og:updated_time" content="2018-12-01T07:49:16.498Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pandapower最优潮流计算tutorial">
 <meta name="twitter:description" content="pandapower最优潮流计算tutorialpandapower最优潮流计算[pandapower Optimal Power Flow]This is an introduction into the usage of the pandapower optimal power flow. It shows how to set the constraints and the cost fac">
-<meta name="twitter:image" content="https://blog.luoyanbin.cn/2018/12/01/pandapower-opf-tutorial/pics/example_opf.png">
+<meta name="twitter:image" content="https://github.com/e2nIEE/pandapower/raw/06af2a20dd711e055b51959becbbf5ab4757b782/tutorials/pics/example_opf.png">
 
 
 
@@ -481,7 +481,7 @@
 <p>该notebook主要是介绍pandapower最优潮流计算的使用。它展示了如何将约束和成本因子设置进入pandapower的元件列表。</p>
 <h2 id="示例网络-Example-Network"><a href="#示例网络-Example-Network" class="headerlink" title="示例网络[Example Network]"></a>示例网络[Example Network]</h2><p>We use the following four bus example network for this tutorial:</p>
 <p>我们的教程使用下图的4节点示例网络：</p>
-<p><img src="pics/example_opf.png" width="50%"></p>
+<p><img src="https://github.com/e2nIEE/pandapower/raw/06af2a20dd711e055b51959becbbf5ab4757b782/tutorials/pics/example_opf.png" width="50%"></p>
 <p>We first create this network in pandapower:</p>
 <p>我们首先在pandapower中创建网络：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandapower <span class="keyword">as</span> pp</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">net = pp.create_empty_network()</span><br><span class="line"></span><br><span class="line"><span class="comment">#create buses</span></span><br><span class="line">bus1 = pp.create_bus(net, vn_kv=<span class="number">220.</span>)</span><br><span class="line">bus2 = pp.create_bus(net, vn_kv=<span class="number">110.</span>)</span><br><span class="line">bus3 = pp.create_bus(net, vn_kv=<span class="number">110.</span>)</span><br><span class="line">bus4 = pp.create_bus(net, vn_kv=<span class="number">110.</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#create 220/110 kV transformer</span></span><br><span class="line">pp.create_transformer(net, bus1, bus2, std_type=<span class="string">"100 MVA 220/110 kV"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#create 110 kV lines</span></span><br><span class="line">pp.create_line(net, bus2, bus3, length_km=<span class="number">70.</span>, std_type=<span class="string">'149-AL1/24-ST1A 110.0'</span>)</span><br><span class="line">pp.create_line(net, bus3, bus4, length_km=<span class="number">50.</span>, std_type=<span class="string">'149-AL1/24-ST1A 110.0'</span>)</span><br><span class="line">pp.create_line(net, bus4, bus2, length_km=<span class="number">40.</span>, std_type=<span class="string">'149-AL1/24-ST1A 110.0'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#create loads</span></span><br><span class="line">pp.create_load(net, bus2, p_kw=<span class="number">60e3</span>, controllable = <span class="keyword">False</span>)</span><br><span class="line">pp.create_load(net, bus3, p_kw=<span class="number">70e3</span>, controllable = <span class="keyword">False</span>)</span><br><span class="line">pp.create_load(net, bus4, p_kw=<span class="number">10e3</span>, controllable = <span class="keyword">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#create generators</span></span><br><span class="line">eg = pp.create_ext_grid(net, bus1, min_p_kw = <span class="number">-1e9</span>, max_p_kw = <span class="number">1e9</span>)</span><br><span class="line">g0 = pp.create_gen(net, bus3, p_kw=<span class="number">-80</span>*<span class="number">1e3</span>, min_p_kw=<span class="number">-80e3</span>, max_p_kw=<span class="number">0</span>,vm_pu=<span class="number">1.01</span>, controllable=<span class="keyword">True</span>)</span><br><span class="line">g1 = pp.create_gen(net, bus4, p_kw=<span class="number">-100</span>*<span class="number">1e3</span>, min_p_kw=<span class="number">-100e3</span>, max_p_kw=<span class="number">0</span>, vm_pu=<span class="number">1.01</span>, controllable=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
@@ -505,13 +505,8 @@ Converged!
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_ext_grid</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>p_kw</th><br>      <th>q_kvar</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>-56530.125753</td><br>      <td>-1974.470643</td><br>    </tr><br>  </tbody><br></table><br></div>
 
-
-
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_gen</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>p_kw</th><br>      <th>q_kvar</th><br>      <th>va_degree</th><br>      <th>vm_pu</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>-71313.391997</td><br>      <td>1969.654771</td><br>      <td>-3.712810</td><br>      <td>1.000009</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>-12299.771985</td><br>      <td>1451.159898</td><br>      <td>-3.712777</td><br>      <td>1.000010</td><br>    </tr><br>  </tbody><br></table><br></div>
-
-
 
 <p>Since all costs were specified the same, the OPF minimizes overall power generation, which is equal to a loss minimization in the network. The loads at buses 3 and 4 are supplied by generators at the same bus, the load at Bus 2 is provided by a combination of the other generators so that the power transmission leads to minimal losses.</p>
 <p>因为所有的成本都看成相同的，最优潮流计算最小化总的发电量后的结果和网络的损失最小化结果相同。母线3和母线4的负荷由各自母线上的发电机供应，而母线2上的负荷是由其他发电机联合供应因此电能的传输达到了最小的损失。</p>
@@ -532,13 +527,8 @@ Converged!
 </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_ext_grid</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>p_kw</th><br>      <th>q_kvar</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>-144559.444871</td><br>      <td>-9193.066456</td><br>    </tr><br>  </tbody><br></table><br></div>
 
-
-
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_gen</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>p_kw</th><br>      <th>q_kvar</th><br>      <th>va_degree</th><br>      <th>vm_pu</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>-0.011910</td><br>      <td>-8601.802715</td><br>      <td>-16.426869</td><br>      <td>0.967619</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>-0.033788</td><br>      <td>-10594.678350</td><br>      <td>-13.481042</td><br>      <td>0.989756</td><br>    </tr><br>  </tbody><br></table><br></div>
-
-
 
 <p>We can see that all active power is provided by the external grid. This makes sense, because the external grid has the lowest cost of all generators and we did not define any constraints.</p>
 <p>我们可以看出所有的有功都是由外部电网提供。这是合理的，因为外部电网拥有最低的发电成本，而且我们没有定义任何的约束。</p>
@@ -550,8 +540,6 @@ Converged!
 <p>因为所有的有功功率都来自与外部电网，接着潮流流过了变压器，变压器过载运行，负载约为145%：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_trafo</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>p_hv_kw</th><br>      <th>q_hv_kvar</th><br>      <th>p_lv_kw</th><br>      <th>q_lv_kvar</th><br>      <th>pl_kw</th><br>      <th>ql_kvar</th><br>      <th>i_hv_ka</th><br>      <th>i_lv_ka</th><br>      <th>loading_percent</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>144559.444871</td><br>      <td>9193.066457</td><br>      <td>-143959.516332</td><br>      <td>15993.742384</td><br>      <td>599.928539</td><br>      <td>25186.808841</td><br>      <td>0.380136</td><br>      <td>0.759988</td><br>      <td>144.85146</td><br>    </tr><br>  </tbody><br></table><br></div>
-
-
 
 <p>We now limit the transformer loading to 50%:</p>
 <p>现在设置变压器的负载约束为50%：</p>
@@ -565,20 +553,13 @@ Converged!
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_trafo</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>p_hv_kw</th><br>      <th>q_hv_kvar</th><br>      <th>p_lv_kw</th><br>      <th>q_lv_kvar</th><br>      <th>pl_kw</th><br>      <th>ql_kvar</th><br>      <th>i_hv_ka</th><br>      <th>i_lv_ka</th><br>      <th>loading_percent</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>49953.864488</td><br>      <td>-2147.313884</td><br>      <td>-49833.813812</td><br>      <td>5167.453489</td><br>      <td>120.050676</td><br>      <td>3020.139605</td><br>      <td>0.131216</td><br>      <td>0.262153</td><br>      <td>49.999995</td><br>    </tr><br>  </tbody><br></table><br></div>
 
-
-
 <p>And power generation is now split between the external grid and generator 1 (which is the second cheapest generation unit):</p>
 <p>现在有功功率的产生主要来自于外部电网和发电机g1（g1是发电成本第二低的发电机组）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_ext_grid</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>p_kw</th><br>      <th>q_kvar</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>-49953.864488</td><br>      <td>2147.313884</td><br>    </tr><br>  </tbody><br></table><br></div>
 
-
-
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_gen</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>p_kw</th><br>      <th>q_kvar</th><br>      <th>va_degree</th><br>      <th>vm_pu</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>-0.005754</td><br>      <td>-2993.145845</td><br>      <td>-6.232829</td><br>      <td>0.985230</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>-93304.077572</td><br>      <td>-3453.343461</td><br>      <td>-1.237884</td><br>      <td>1.025709</td><br>    </tr><br>  </tbody><br></table><br></div>
-
-
 
 <p>This comes of course with an increase in dispatch costs:</p>
 <p>这样的结果就导致了dispatch成本的上升：</p>
@@ -588,8 +569,6 @@ Converged!
 <p>我们现在关注于线路负载：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_line</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>p_from_kw</th><br>      <th>q_from_kvar</th><br>      <th>p_to_kw</th><br>      <th>q_to_kvar</th><br>      <th>pl_kw</th><br>      <th>ql_kvar</th><br>      <th>i_from_ka</th><br>      <th>i_to_ka</th><br>      <th>i_ka</th><br>      <th>loading_percent</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>19780.009515</td><br>      <td>-2479.435419</td><br>      <td>-19341.695290</td><br>      <td>1104.393239</td><br>      <td>438.314225</td><br>      <td>-1375.042180</td><br>      <td>0.104309</td><br>      <td>0.103207</td><br>      <td>0.104309</td><br>      <td>22.193320</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>-50658.298957</td><br>      <td>1888.752606</td><br>      <td>52783.697109</td><br>      <td>921.064101</td><br>      <td>2125.398152</td><br>      <td>2809.816707</td><br>      <td>0.270061</td><br>      <td>0.270140</td><br>      <td>0.270140</td><br>      <td>57.476548</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>30520.380464</td><br>      <td>2532.279360</td><br>      <td>-29946.195703</td><br>      <td>-2688.018070</td><br>      <td>574.184761</td><br>      <td>-155.738710</td><br>      <td>0.156712</td><br>      <td>0.157323</td><br>      <td>0.157323</td><br>      <td>33.472994</td><br>    </tr><br>  </tbody><br></table><br></div>
-
-
 
 <p>and run the OPF with a 50% loading constraint:</p>
 <p>然后在线路50%负载水平条件下运行最优潮流计算：</p>
@@ -605,20 +584,13 @@ Converged!
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_line</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>p_from_kw</th><br>      <th>q_from_kvar</th><br>      <th>p_to_kw</th><br>      <th>q_to_kvar</th><br>      <th>pl_kw</th><br>      <th>ql_kvar</th><br>      <th>i_from_ka</th><br>      <th>i_to_ka</th><br>      <th>i_ka</th><br>      <th>loading_percent</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>16727.519781</td><br>      <td>-3194.974086</td><br>      <td>-16412.725022</td><br>      <td>1534.133994</td><br>      <td>314.794759</td><br>      <td>-1660.840092</td><br>      <td>0.088849</td><br>      <td>0.087130</td><br>      <td>0.088849</td><br>      <td>18.903945</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>-44451.195382</td><br>      <td>868.876229</td><br>      <td>46059.937188</td><br>      <td>830.815836</td><br>      <td>1608.741806</td><br>      <td>1699.692065</td><br>      <td>0.234999</td><br>      <td>0.235000</td><br>      <td>0.235000</td><br>      <td>49.999998</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>27533.080431</td><br>      <td>4051.080417</td><br>      <td>-27060.140775</td><br>      <td>-4429.078165</td><br>      <td>472.939657</td><br>      <td>-377.997748</td><br>      <td>0.141964</td><br>      <td>0.143057</td><br>      <td>0.143057</td><br>      <td>30.437636</td><br>    </tr><br>  </tbody><br></table><br></div>
 
-
-
 <p>And all generators are involved in supplying the loads:</p>
 <p>所有的发电机都开始供应负荷：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_ext_grid</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>p_kw</th><br>      <th>q_kvar</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>-49787.59354</td><br>      <td>4603.760721</td><br>    </tr><br>  </tbody><br></table><br></div>
 
-
-
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_gen</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>p_kw</th><br>      <th>q_kvar</th><br>      <th>va_degree</th><br>      <th>vm_pu</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>-9136.079301</td><br>      <td>-2403.009062</td><br>      <td>-5.814954</td><br>      <td>0.992994</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>-83593.017290</td><br>      <td>-4881.895570</td><br>      <td>-1.511656</td><br>      <td>1.028899</td><br>    </tr><br>  </tbody><br></table><br></div>
-
-
 
 <p>This of course comes with a once again rising dispatch cost:</p>
 <p>这导致了dispatch成本又一次的提升：</p>
@@ -629,8 +601,6 @@ Converged!
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_bus</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>vm_pu</th><br>      <th>va_degree</th><br>      <th>p_kw</th><br>      <th>q_kvar</th><br>      <th>lam_p</th><br>      <th>lam_q</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>1.000000</td><br>      <td>0.000000</td><br>      <td>-49787.593540</td><br>      <td>4603.760721</td><br>      <td>100.000000</td><br>      <td>-2.642153e-21</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>1.006025</td><br>      <td>-3.408832</td><br>      <td>60000.000000</td><br>      <td>0.000000</td><br>      <td>130.952263</td><br>      <td>-5.410268e-01</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>0.992994</td><br>      <td>-5.814954</td><br>      <td>60863.920699</td><br>      <td>-2403.009062</td><br>      <td>149.999973</td><br>      <td>1.192009e-21</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>1.028899</td><br>      <td>-1.511656</td><br>      <td>-73593.017290</td><br>      <td>-4881.895570</td><br>      <td>120.000014</td><br>      <td>2.988530e-21</td><br>    </tr><br>  </tbody><br></table><br></div>
 
-
-
 <p>and constrain it:</p>
 <p>加以约束，并运行最优潮流计算：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">net.bus[<span class="string">"min_vm_pu"</span>] = <span class="number">1.0</span></span><br><span class="line">net.bus[<span class="string">"max_vm_pu"</span>] = <span class="number">1.02</span></span><br><span class="line">pp.runopp(net)</span><br></pre></td></tr></table></figure>
@@ -639,20 +609,13 @@ Converged!
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_bus</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>vm_pu</th><br>      <th>va_degree</th><br>      <th>p_kw</th><br>      <th>q_kvar</th><br>      <th>lam_p</th><br>      <th>lam_q</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>1.000000</td><br>      <td>0.000000</td><br>      <td>-49906.847219</td><br>      <td>3050.617054</td><br>      <td>100.000000</td><br>      <td>-6.408104e-22</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>1.004168</td><br>      <td>-3.421015</td><br>      <td>60000.000000</td><br>      <td>0.000000</td><br>      <td>131.268596</td><br>      <td>-2.133663e-01</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>1.000000</td><br>      <td>-5.976094</td><br>      <td>59278.204655</td><br>      <td>-14858.933373</td><br>      <td>149.999992</td><br>      <td>3.120534e-21</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>1.020000</td><br>      <td>-1.366892</td><br>      <td>-71863.491321</td><br>      <td>9172.691847</td><br>      <td>120.000005</td><br>      <td>-1.926105e-21</td><br>    </tr><br>  </tbody><br></table><br></div>
 
-
-
 <p>And all generators are once again involved in supplying the loads:</p>
 <p>所有的发电机又一次都参与了负荷的供应：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_ext_grid</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>p_kw</th><br>      <th>q_kvar</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>-49906.847219</td><br>      <td>3050.617054</td><br>    </tr><br>  </tbody><br></table><br></div>
 
-
-
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_gen</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>p_kw</th><br>      <th>q_kvar</th><br>      <th>va_degree</th><br>      <th>vm_pu</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>-10721.795345</td><br>      <td>-14858.933373</td><br>      <td>-5.976094</td><br>      <td>1.00</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>-81863.491321</td><br>      <td>9172.691847</td><br>      <td>-1.366892</td><br>      <td>1.02</td><br>    </tr><br>  </tbody><br></table><br></div>
-
-
 
 <p>This of course comes once again with rising dispatch costs:</p>
 <p>又一次导致了dipatch成本的提升：</p>
@@ -666,33 +629,21 @@ Converged!
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_bus</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>vm_pu</th><br>      <th>va_degree</th><br>      <th>p_kw</th><br>      <th>q_kvar</th><br>      <th>lam_p</th><br>      <th>lam_q</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>NaN</td><br>      <td>0.000000</td><br>      <td>-49999.999965</td><br>      <td>NaN</td><br>      <td>100.000000</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>NaN</td><br>      <td>-3.436967</td><br>      <td>60000.000000</td><br>      <td>NaN</td><br>      <td>130.909091</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>NaN</td><br>      <td>-5.708566</td><br>      <td>61488.746680</td><br>      <td>NaN</td><br>      <td>150.000000</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>NaN</td><br>      <td>-1.362340</td><br>      <td>-71488.746715</td><br>      <td>NaN</td><br>      <td>120.000000</td><br>      <td>0.0</td><br>    </tr><br>  </tbody><br></table><br></div>
 
-
-
 <p>Line and transformer loading limits are however complied with:</p>
 <p>线路和变压器负载限制编译后为：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_line</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>p_from_kw</th><br>      <th>q_from_kvar</th><br>      <th>p_to_kw</th><br>      <th>q_to_kvar</th><br>      <th>pl_kw</th><br>      <th>ql_kvar</th><br>      <th>i_from_ka</th><br>      <th>i_to_ka</th><br>      <th>i_ka</th><br>      <th>loading_percent</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>16715.233329</td><br>      <td>0.0</td><br>      <td>-16715.233329</td><br>      <td>0.0</td><br>      <td>0.0</td><br>      <td>0.0</td><br>      <td>0.087732</td><br>      <td>0.087732</td><br>      <td>0.087732</td><br>      <td>18.666430</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>-44773.513351</td><br>      <td>0.0</td><br>      <td>44773.513351</td><br>      <td>0.0</td><br>      <td>0.0</td><br>      <td>0.0</td><br>      <td>0.235000</td><br>      <td>0.235000</td><br>      <td>0.235000</td><br>      <td>50.000000</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>26715.233363</td><br>      <td>0.0</td><br>      <td>-26715.233363</td><br>      <td>0.0</td><br>      <td>0.0</td><br>      <td>0.0</td><br>      <td>0.140219</td><br>      <td>0.140219</td><br>      <td>0.140219</td><br>      <td>29.833747</td><br>    </tr><br>  </tbody><br></table><br></div>
 
-
-
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_trafo</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>p_hv_kw</th><br>      <th>q_hv_kvar</th><br>      <th>p_lv_kw</th><br>      <th>q_lv_kvar</th><br>      <th>pl_kw</th><br>      <th>ql_kvar</th><br>      <th>i_hv_ka</th><br>      <th>i_lv_ka</th><br>      <th>loading_percent</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>49999.999965</td><br>      <td>0.0</td><br>      <td>-49999.999965</td><br>      <td>0.0</td><br>      <td>0.0</td><br>      <td>0.0</td><br>      <td>0.131216</td><br>      <td>0.262432</td><br>      <td>50.0</td><br>    </tr><br>  </tbody><br></table><br></div>
-
-
 
 <p>As are generator limits:</p>
 <p>发电机限制为：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.gen</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>name</th><br>      <th>bus</th><br>      <th>p_kw</th><br>      <th>vm_pu</th><br>      <th>sn_kva</th><br>      <th>min_q_kvar</th><br>      <th>max_q_kvar</th><br>      <th>scaling</th><br>      <th>in_service</th><br>      <th>type</th><br>      <th>min_p_kw</th><br>      <th>max_p_kw</th><br>      <th>controllable</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>None</td><br>      <td>2</td><br>      <td>-80000.0</td><br>      <td>1.01</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>1.0</td><br>      <td>True</td><br>      <td>None</td><br>      <td>-80000.0</td><br>      <td>0.0</td><br>      <td>True</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>None</td><br>      <td>3</td><br>      <td>-100000.0</td><br>      <td>1.01</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>1.0</td><br>      <td>True</td><br>      <td>None</td><br>      <td>-100000.0</td><br>      <td>0.0</td><br>      <td>True</td><br>    </tr><br>  </tbody><br></table><br></div>
 
-
-
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_gen</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>p_kw</th><br>      <th>q_kvar</th><br>      <th>va_degree</th><br>      <th>vm_pu</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>-8511.253320</td><br>      <td>NaN</td><br>      <td>-5.708566</td><br>      <td>1.0</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>-81488.746715</td><br>      <td>NaN</td><br>      <td>-1.362340</td><br>      <td>1.0</td><br>    </tr><br>  </tbody><br></table><br></div>
-
-
 
 <p>The cost function is the same for the linearized OPF as for the non-linear one:</p>
 <p>线性最优潮流计算和非线性潮流计算的成本函数一致：</p>
@@ -702,8 +653,6 @@ Converged!
 <p><strong>分段线性成本函数</strong><br>最优潮流九三也提供了分段线性成本函数。我们首先看一下实际的成本函数设置：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.polynomial_cost</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>type</th><br>      <th>element</th><br>      <th>element_type</th><br>      <th>c</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>p</td><br>      <td>0</td><br>      <td>ext_grid</td><br>      <td>[[-0.1, 0.0]]</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>p</td><br>      <td>0</td><br>      <td>gen</td><br>      <td>[[-0.15, 0.0]]</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>p</td><br>      <td>1</td><br>      <td>gen</td><br>      <td>[[-0.12, 0.0]]</td><br>    </tr><br>  </tbody><br></table><br></div>
-
-
 
 <p>An element can either have polynomial costs or piecewise linear costs at the same time. So let us first delete the polynomial costs in order to avoid confusion and errors:</p>
 <p>一个元件的成本函数只能是多项式或者分段线性中的一种。因此，让我们首先删除多项式成本函数，以免产生困惑和错误：</p>
@@ -770,18 +719,12 @@ ValueError: Cost function must be defined for whole power range of the generator
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ext_grid</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>name</th><br>      <th>bus</th><br>      <th>vm_pu</th><br>      <th>va_degree</th><br>      <th>in_service</th><br>      <th>min_p_kw</th><br>      <th>max_p_kw</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>None</td><br>      <td>0</td><br>      <td>1.0</td><br>      <td>0.0</td><br>      <td>True</td><br>      <td>-1.000000e+09</td><br>      <td>1.000000e+09</td><br>    </tr><br>  </tbody><br></table><br></div>
 
-
-
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pp.create_piecewise_linear_cost(net, <span class="number">0</span>, <span class="string">"ext_grid"</span>, np.array([[<span class="number">-1e9</span>, <span class="number">1e9</span>*<span class="number">.1</span>], [<span class="number">1e9</span>, <span class="number">-1e9</span>*<span class="number">0.1</span>]]))</span><br></pre></td></tr></table></figure>
 <pre><code>2
 </code></pre><p>Let us check the results from the previous OPF again!</p>
 <p>让我们再看一下之前的OPF运行结果：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_bus</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>vm_pu</th><br>      <th>va_degree</th><br>      <th>p_kw</th><br>      <th>q_kvar</th><br>      <th>lam_p</th><br>      <th>lam_q</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>NaN</td><br>      <td>0.000000</td><br>      <td>-49999.999965</td><br>      <td>NaN</td><br>      <td>100.000000</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>NaN</td><br>      <td>-3.436967</td><br>      <td>60000.000000</td><br>      <td>NaN</td><br>      <td>130.909091</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>NaN</td><br>      <td>-5.708566</td><br>      <td>61488.746680</td><br>      <td>NaN</td><br>      <td>150.000000</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>NaN</td><br>      <td>-1.362340</td><br>      <td>-71488.746715</td><br>      <td>NaN</td><br>      <td>120.000000</td><br>      <td>0.0</td><br>    </tr><br>  </tbody><br></table><br></div>
-
-
-
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_cost</span><br></pre></td></tr></table></figure>
 <pre><code>16055.337600298368
@@ -792,8 +735,6 @@ ValueError: Cost function must be defined for whole power range of the generator
 <pre><code>16055.337600298368
 </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.res_bus</span><br></pre></td></tr></table></figure>
 <div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>vm_pu</th><br>      <th>va_degree</th><br>      <th>p_kw</th><br>      <th>q_kvar</th><br>      <th>lam_p</th><br>      <th>lam_q</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>NaN</td><br>      <td>0.000000</td><br>      <td>-49999.999965</td><br>      <td>NaN</td><br>      <td>100.000000</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>NaN</td><br>      <td>-3.436967</td><br>      <td>60000.000000</td><br>      <td>NaN</td><br>      <td>130.909091</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>NaN</td><br>      <td>-5.708566</td><br>      <td>61488.746680</td><br>      <td>NaN</td><br>      <td>150.000000</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>NaN</td><br>      <td>-1.362340</td><br>      <td>-71488.746715</td><br>      <td>NaN</td><br>      <td>120.000000</td><br>      <td>0.0</td><br>    </tr><br>  </tbody><br></table><br></div>
-
-
 
       
     </div>
